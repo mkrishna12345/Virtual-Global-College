@@ -6,7 +6,7 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Admin Login</h4>
-							<form method="POST">
+							<form method="POST" action="AdminLogin">
 							 
 								<div class="form-group">
 									<label for="email">E-Mail Address</label>
@@ -16,7 +16,7 @@
 
 								<div class="form-group">
 									<label for="password">Password
-										<a href="forgot.html" class="float-right">
+										<a href="forgot.html" class="float-right">``
 											Forgot Password?
 										</a>
 									</label>
@@ -30,7 +30,7 @@
 								</div>
 
 								<div class="form-group no-margin">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button type="submit" id="admin-login-button" class="btn btn-primary btn-block">
 										Login
 									</button>
 								</div>

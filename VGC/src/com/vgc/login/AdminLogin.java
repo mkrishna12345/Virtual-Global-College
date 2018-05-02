@@ -3,8 +3,9 @@ package com.vgc.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +22,29 @@ public class AdminLogin extends HttpServlet {
 		 
 		PrintWriter out = response.getWriter();
 		
+		String username = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		System.out.println("username is "+username+ " password "+password);
+		
 		try {
 			Connection conn = JdbcConnection.DBConnection();
-			Statement stmt = conn.createStatement();
-			String query = "create table demo (id int, name varchar(20)) values (1,'mani') ";
+			System.out.println("connection is "+conn);
+			PreparedStatement pt =  conn.prepareStatement("select * from `admin` where username=? and password=?");
+			pt.setString(1, username);
+			pt.setString(2, password);
+			ResultSet rs = pt.executeQuery();
+			
+			if(rs.next())
+			{
+				System.out.println(rs.getString(1)+" "+rs.getString(2));
+				
+				out.println("success");
+			}
+			else{
+				out.println("failed");
+				System.out.println("bad credential");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

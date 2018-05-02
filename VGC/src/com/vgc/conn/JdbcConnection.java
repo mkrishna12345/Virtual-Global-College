@@ -7,28 +7,23 @@ import java.sql.SQLException;
 public class JdbcConnection {
 	
 
-public static Connection DBConnection() {
- 
-    String url = "jdbc:mysql://localhost/vgc";
-    String username = "root";
-    String password = "root";
-    Connection conn = null;
-    try{
-      Class.forName("com.mysql.jdbc.Driver").newInstance();
-      conn =DriverManager.getConnection(url,username,password);
-
-      }catch (ClassNotFoundException e) {
-        System.out.println(e.getMessage());
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    } catch (InstantiationException e) {
-        e.printStackTrace();
-    } catch (IllegalAccessException e) {
-        e.printStackTrace();
-    }
-
-    return conn;
-
-}
+	public static Connection DBConnection()
+	{
+		
+		 Connection conn=null;
+		 
+		 try {
+			 Class.forName("com.mysql.jdbc.Driver");
+			 conn=DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/valueminds?autoReconnect=true&useSSL=false", "valueminds", "valueminds");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return conn;
+		
+	}
 
 }
