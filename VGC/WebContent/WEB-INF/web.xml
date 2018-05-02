@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Connection</display-name>
+    <servlet-name>Connection</servlet-name>
+    <servlet-class>com.vgc.conn.Connection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connection</servlet-name>
+    <url-pattern>/Connection</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogin</display-name>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>com.vgc.login.AdminLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogin</servlet-name>
+    <url-pattern>/AdminLogin</url-pattern>
+  </servlet-mapping>
 </web-app>
