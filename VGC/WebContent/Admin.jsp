@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.raghav.Dbconn.DbConnection"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,6 +14,20 @@
 <body>
 <%@ include file="Links.html" %>
 <%@ include file="Sidebar.jsp" %>
+<%
+Connection conn=DbConnection.getConnection();
+PreparedStatement ps=conn.prepareStatement("select count(*) from Faculty");
+PreparedStatement ps1=conn.prepareStatement("select count(*) from Student");
+ResultSet rs=ps.executeQuery();
+rs.next();
+ResultSet rs1=ps1.executeQuery();
+rs1.next();
+
+
+
+%>
+
+
          
    <div id="page-wrapper">
 		  <div class="header"> 
@@ -35,7 +53,7 @@
 						</div>
 						<div class="card-stacked green">
 						<div class="card-content">
-						<h3>84,198</h3> 
+						<h3><%=rs.getString(1) %></h3> 
 						</div>
 						<div class="card-action">
 						<strong> No.of Faculty </strong>
@@ -52,7 +70,7 @@
 						</div>
 						<div class="card-stacked green">
 						<div class="card-content">
-						<h3 >88,658</h3> 
+						<h3 ><%=rs1.getString(1) %></h3> 
 						</div>
 						<div class="card-action">
 						<strong >No.of Students</strong>

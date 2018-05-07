@@ -8,7 +8,7 @@ public class DbConnection {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/raghav", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/valueminds?autoReconnect=true&useSSL=false", "valueminds", "valueminds");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

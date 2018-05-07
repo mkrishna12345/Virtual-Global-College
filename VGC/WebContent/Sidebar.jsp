@@ -53,7 +53,7 @@
                         <a href="StudentList.jsp" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Student List</a>
                     </li>
                     <li>
-                        <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Course List</a>
+                        <a href="Course_list.jsp" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Course List</a>
                     </li>
                     
                     <li>

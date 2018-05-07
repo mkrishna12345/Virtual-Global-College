@@ -1,3 +1,4 @@
+<%@page import="org.apache.el.lang.ELSupport"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection" %>
@@ -42,7 +43,7 @@
                                             <th>Address</th>
                                             <th>Year</th>
                                             <th> Status</th>
-                                            <th>Delete</th>
+                                            <!-- <th>Delete</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,37 +75,56 @@
                                        
     <%
     
-    
+    String s1="",s2="",s3="",s4="";
+    int i=0;
    Connection con=DbConnection.getConnection();
   
-    PreparedStatement ps=con.prepareStatement("select * from emp");
+    PreparedStatement ps=con.prepareStatement("select * from Student");
     ResultSet rs=ps.executeQuery();
     while(rs.next())
     {
+    s1=rs.getString(2);
+    s2=rs.getString(5);
+    s3=rs.getString(7);
+    s4=rs.getString(9);
     
     %>
     
     
     
     <tr>
-    <td><%=rs.getInt("Id") %></td>
-    <td><%=rs.getString("name") %></td>
-    <td><%=rs.getString("salary") %></td>
-    <td><%=rs.getString("designation") %></td>
-    <td><a href="DeleteStudent?id=rs.getId()">Delete</a></td>
+    <td><%=s1 %></td>
+    <td><%=s2 %></td>
+    <td><%=s3 %></td>
     
-    
-    
-    
-    </tr>
-     <%} %>                                  
+  	 <%	
+			if(s4.equalsIgnoreCase("Inactive"))
+			{
+			
+		%>
+              <td><div>
+                  <div align="center"><a href="StudentStatus.jsp?Name=<%=s1%>"><%=s4%></a></div>
+              </div></td>
+              <%
+		
+			}else
+			{
+		%>
+              <td ><div>
+                  <div align="center"><%=s4%></div> </div></td>
+               <!-- <td><a href='delete.jsp?id="+e.getid()"'>Delete</a></td> -->
+               <!-- <td><a href='DeleteServlet?id="+e.getId()+"'>delete</a></td> -->
+               
+            </tr>
+            <%
+			  }
+	  }
+           
+         
+         
+%>                   
                                                                              
-                                       
-                                      
-                                       
-                                       
-                                        
-                                    </tbody>
+                           </tbody>
                                 </table>
                             </div>
                             <div class="row">
@@ -124,31 +144,10 @@
             </div>
             </div>
             
-			   
-			   
-			         
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+			
 		</div>
 </div>
+
 
 </body>
 </html>
